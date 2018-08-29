@@ -47,6 +47,14 @@ LOCAL_ASSETS_PATH = {
     'KUBE_APISERVER_CERT': 'certs/kubernetes/apiserver.crt',
     'KUBE_APISERVER_CERT_REQ': 'certs/kubernetes/apiserver.csr',
 
+    'KUBE_FRONT_PROXY_CA_KEY': 'certs/kubernetes/front-proxy-ca.key',
+    'KUBE_FRONT_PROXY_CA_CERT': 'certs/kubernetes/front-proxy-ca.crt',
+    'KUBE_FRONT_PROXY_CA_SERIAL': 'certs/kubernetes/front-proxy-ca.srl',
+    'KUBE_FRONT_PROXY_CLIENT_KEY': 'certs/kubernetes/front-proxy-client.key',
+    'KUBE_FRONT_PROXY_CLIENT_CERT_REQ':
+        'certs/kubernetes/front-proxy-client.csr',
+    'KUBE_FRONT_PROXY_CLIENT_CERT': 'certs/kubernetes/front-proxy-client.crt',
+
     'KUBE_ASSETS_DIR': 'kubernetes',
     'KUBE_MANIFESTS_DIR': 'kubernetes/manifests',
 

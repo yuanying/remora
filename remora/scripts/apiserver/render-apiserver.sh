@@ -11,12 +11,15 @@ KUBE_TEMPLATE=${LOCAL_MANIFESTS_DIR}/kube-apiserver.yaml
 SERVER_CERT=$(cat ${KUBE_APISERVER_CERT} | base64 | tr -d '\n')
 SERVER_KEY=$(cat ${KUBE_APISERVER_KEY} | base64 | tr -d '\n')
 CA=$(cat ${KUBE_CA_CERT} | base64 | tr -d '\n')
+FP_CA=$(cat ${KUBE_FRONT_PROXY_CA_CERT} | base64 | tr -d '\n')
 ETCD_CLIENT_CA=$(cat ${ETCD_CA_CERT} | base64 | tr -d '\n')
 ETCD_CLIENT_CERT=$(cat ${ETCD_CLIENT_CERT} | base64 | tr -d '\n')
 ETCD_CLIENT_KEY=$(cat ${ETCD_CLIENT_KEY} | base64 | tr -d '\n')
 SA_PUB_KEY=$(cat ${KUBE_SA_PUB_KEY} | base64 | tr -d '\n')
 KUBELET_CLIENT_CERT=$(cat ${KUBE_KUBELET_CLIENT_CERT} | base64 | tr -d '\n')
 KUBELET_CLIENT_KEY=$(cat ${KUBE_KUBELET_CLIENT_KEY} | base64 | tr -d '\n')
+FP_CLIENT_CERT=$(cat ${KUBE_FRONT_PROXY_CLIENT_CERT} | base64 | tr -d '\n')
+FP_CLIENT_KEY=$(cat ${KUBE_FRONT_PROXY_CLIENT_KEY} | base64 | tr -d '\n')
 
 cat << EOF > $KUBE_TEMPLATE
 ---
@@ -25,12 +28,15 @@ data:
   apiserver.crt: ${SERVER_CERT}
   apiserver.key: ${SERVER_KEY}
   ca.crt: ${CA}
+  front-proxy-ca.crt: ${FP_CA}
   etcd-client-ca.crt: ${ETCD_CLIENT_CA}
   etcd-client.crt: ${ETCD_CLIENT_CERT}
   etcd-client.key: ${ETCD_CLIENT_KEY}
   service-account.pub: ${SA_PUB_KEY}
   kubelet-client.crt: ${KUBELET_CLIENT_CERT}
   kubelet-client.key: ${KUBELET_CLIENT_KEY}
+  front-proxy-client.crt: ${FP_CLIENT_CERT}
+  front-proxy-client.key: ${FP_CLIENT_KEY}
 kind: Secret
 metadata:
   name: kube-apiserver
@@ -86,6 +92,13 @@ spec:
         - --kubelet-certificate-authority=/etc/kubernetes/secrets/ca.crt
         - --kubelet-client-certificate=/etc/kubernetes/secrets/kubelet-client.crt
         - --kubelet-client-key=/etc/kubernetes/secrets/kubelet-client.key
+        - --proxy-client-cert-file=/etc/kubernetes/secrets/front-proxy-client.crt
+        - --proxy-client-key-file=/etc/kubernetes/secrets/front-proxy-client.key
+        - --requestheader-client-ca-file=/etc/kubernetes/secrets/front-proxy-ca.crt
+        - --requestheader-allowed-names=aggregator
+        - --requestheader-extra-headers-prefix=X-Remote-Extra-
+        - --requestheader-group-headers=X-Remote-Group
+        - --requestheader-username-headers=X-Remote-User
         - --secure-port=${KUBE_INTERNAL_PORT}
         - --service-account-key-file=/etc/kubernetes/secrets/service-account.pub
         - --service-cluster-ip-range=${KUBE_SERVICE_IP_RANGE}
