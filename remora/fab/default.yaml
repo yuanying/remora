@@ -40,9 +40,10 @@ kubernetes:
   cloud_provider: ""
   cloud_config: ""
   upstream_nameservers: '[\"8.8.8.8\", \"8.8.4.4\"]'
-  addons: ["kube-proxy", "kube-dns"]
+  addons: ["kube-proxy", "coredns"]
   cgroup_driver: cgroupfs
   proxy_mode: "iptables"
+  systemd_docker_service_name: "docker.service"
 
 etcd:
   selfhosted: "false"

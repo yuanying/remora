@@ -17,8 +17,8 @@ KUBELET_SERVICE=${KUBELET_ASSETS_DIR}/kubelet.service
 cat << EOF > ${KUBELET_SERVICE}
 [Unit]
 Description=Kubelet Container
-After=docker.service
-Requires=docker.service
+After=${KUBE_SYSTEMD_DOCKER_SERVICE_NAME}
+Requires=${KUBE_SYSTEMD_DOCKER_SERVICE_NAME}
 
 [Service]
 TimeoutStartSec=0
