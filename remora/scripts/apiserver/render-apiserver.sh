@@ -122,9 +122,6 @@ spec:
         - mountPath: /usr/share/ca-certificates
           name: usr-share-ca-certificates
           readOnly: true
-        - mountPath: /usr/local/share/ca-certificates
-          name: usr-local-share-ca-certificates
-          readOnly: true
         - mountPath: /etc/kubernetes/secrets
           name: secrets
           readOnly: true
@@ -150,10 +147,6 @@ spec:
           path: /usr/share/ca-certificates
           type: DirectoryOrCreate
         name: usr-share-ca-certificates
-      - hostPath:
-          path: /usr/local/share/ca-certificates
-          type: DirectoryOrCreate
-        name: usr-local-share-ca-certificates
       - hostPath:
           path: /etc/ca-certificates
           type: DirectoryOrCreate
