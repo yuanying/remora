@@ -77,11 +77,8 @@ def construct_env(env_data, default_env_data=None):
         for k, v in fabric_override.items():
             env[k] = v
 
-    host_string_user = parse_host_string(env.host_string)['user']
     env_data_user = env_data.get('user', None)
-    if host_string_user:
-        env['user'] = host_string_user
-    elif env_data_user:
+    if env_data_user:
         env['user'] = env_data_user
 
     roledefs = env_data.get('roledefs', None)
