@@ -64,6 +64,7 @@ ExecStart=${DOCKER_PATH} run \\
         --cni-conf-dir=/etc/cni/net.d \\
         --network-plugin=${KUBE_NETWORK_PLUGIN} \\
         --hostname-override=${NODE_IP} \\
+        --volume-plugin-dir=${KUBE_VOLUME_PLUGIN_DIR} \\
         ${KUBELET_NODE_LABELS} \\
         ${KUBELET_REGISTER_WITH_TAINTS} \\
         --v=${KUBE_LOG_LEVEL:-"2"}
