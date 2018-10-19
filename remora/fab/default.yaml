@@ -1,6 +1,10 @@
 ---
 temp_dir: "/tmp/kube_temp"
 
+clean:
+  dirs:
+  - "/var/lib/rook"
+
 local:
   shell: "/bin/bash"
   kubeconfig: "~/.kube/config"

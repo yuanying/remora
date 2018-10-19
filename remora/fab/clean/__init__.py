@@ -39,6 +39,10 @@ def dependency():
             sudo('systemctl daemon-reload && systemctl enable docker')
 
         sudo('rm -rf /var/lib/kubelet')
+        for d in env['configs']['clean'].get('dirs', []):
+             sudo('rm -rf {}'.format(d))
+        else:
+            pass
         reboot()
 
 
