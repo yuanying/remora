@@ -63,7 +63,6 @@ data:
   Corefile: |
     .:53 {
         errors
-        log
         health
         kubernetes cluster.local in-addr.arpa ip6.arpa {
             pods insecure
@@ -73,7 +72,9 @@ data:
         prometheus :9153
         proxy . /etc/resolv.conf
         cache 30
+        loop
         reload
+        loadbalance
     }
 ---
 # coreDNS-controller.yaml
@@ -111,7 +112,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: coredns
-        image: k8s.gcr.io/coredns:1.1.3
+        image: k8s.gcr.io/coredns:1.2.4
         imagePullPolicy: IfNotPresent
         resources:
           limits:
