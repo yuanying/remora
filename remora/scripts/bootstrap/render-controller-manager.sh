@@ -34,6 +34,8 @@ spec:
     - --use-service-account-credentials=true
     - --v=${KUBE_LOG_LEVEL:-"2"}
     volumeMounts:
+    - name: var-run-kubernetes
+      mountPath: /var/run/kubernetes
     - name: kubernetes
       mountPath: /etc/kubernetes
       readOnly: true
@@ -50,6 +52,8 @@ spec:
       readOnly: true
   hostNetwork: true
   volumes:
+  - name: var-run-kubernetes
+    emptyDir: {}
   - name: kubernetes
     hostPath:
       path: /etc/kubernetes
