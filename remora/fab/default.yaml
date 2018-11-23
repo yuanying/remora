@@ -48,6 +48,12 @@ kubernetes:
   cgroup_driver: cgroupfs
   proxy_mode: "iptables"
   systemd_docker_service_name: "docker.service"
+  kube_reserved: 100m,memory=100Mi,ephemeral-storage=1Gi
+  # kube_reserved_cgroup: /docker
+  kube_reserved_cgroup: ''
+  system_reserved: 200m,memory=1024Mi,ephemeral-storage=1Gi
+  # system_reserved_cgroup: /system.slice
+  system_reserved_cgroup: ''
 
 etcd:
   selfhosted: "false"
