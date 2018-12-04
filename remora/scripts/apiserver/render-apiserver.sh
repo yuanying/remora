@@ -94,7 +94,7 @@ spec:
         - --proxy-client-cert-file=/etc/kubernetes/secrets/front-proxy-client.crt
         - --proxy-client-key-file=/etc/kubernetes/secrets/front-proxy-client.key
         - --requestheader-client-ca-file=/etc/kubernetes/secrets/front-proxy-ca.crt
-        - --requestheader-allowed-names=aggregator
+        - --requestheader-allowed-names=aggregator-client
         - --requestheader-extra-headers-prefix=X-Remote-Extra-
         - --requestheader-group-headers=X-Remote-Group
         - --requestheader-username-headers=X-Remote-User
