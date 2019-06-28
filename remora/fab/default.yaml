@@ -22,7 +22,7 @@ haproxy:
   keepalived_use_unicast: "true"
 
 kubernetes:
-  version: v1.12.1
+  version: v1.14.3
   hyperkube_image_repo: gcr.io/google_containers/hyperkube
   cluster_cidr: 10.244.0.0/16
   node_cidr_mask_size: 24
@@ -66,6 +66,6 @@ etcd:
   election_timeout: 500
 
 flannel:
-  version: "v0.10.0-amd64"
+  version: "v0.11.0-amd64"
   image_repo: quay.io/coreos/flannel
   backend_type: vxlan
