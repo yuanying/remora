@@ -25,5 +25,4 @@ etcd:
     "192.168.43.112": node02.local
 
 kubernetes:
-  version: v1.11.1
   public_service_ip: 192.168.43.110
