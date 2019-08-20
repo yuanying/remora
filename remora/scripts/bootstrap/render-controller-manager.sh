@@ -20,7 +20,7 @@ spec:
     image: ${KUBE_HYPERKUBE_IMAGE_REPO}:${KUBE_VERSION}
     command:
     - ./hyperkube
-    - controller-manager
+    - kube-controller-manager
     - --allocate-node-cidrs=true
     - --cluster-cidr=${KUBE_CLUSTER_CIDR}
     - --cluster-signing-cert-file=/etc/kubernetes/bootstrap/secrets/kubernetes/ca.crt

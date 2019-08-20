@@ -117,7 +117,7 @@ spec:
     spec:
       hostNetwork: true
       nodeSelector:
-        beta.kubernetes.io/arch: amd64
+        kubernetes.io/arch: amd64
       tolerations:
       - operator: Exists
         effect: NoSchedule

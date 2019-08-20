@@ -97,7 +97,7 @@ spec:
         image: ${KUBE_HYPERKUBE_IMAGE_REPO}:${KUBE_VERSION}
         command:
         - ./hyperkube
-        - scheduler
+        - kube-scheduler
         - --leader-elect=true
         - --v=${KUBE_LOG_LEVEL:-"2"}
         livenessProbe:

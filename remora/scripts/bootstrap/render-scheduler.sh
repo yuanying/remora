@@ -18,7 +18,7 @@ spec:
     image: ${KUBE_HYPERKUBE_IMAGE_REPO}:${KUBE_VERSION}
     command:
     - ./hyperkube
-    - scheduler
+    - kube-scheduler
     - --kubeconfig=/etc/kubernetes/bootstrap/kubeconfig-bootstrap
     - --leader-elect=true
     - --v=${KUBE_LOG_LEVEL:-"2"}

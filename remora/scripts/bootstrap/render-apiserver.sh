@@ -27,7 +27,7 @@ spec:
     - /usr/bin/flock
     - /var/lock/api-server.lock
     - /hyperkube
-    - apiserver
+    - kube-apiserver
     - --authorization-mode=Node,RBAC
     - --advertise-address=\$(POD_IP)
     - --allow-privileged

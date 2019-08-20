@@ -45,7 +45,6 @@ data:
     clusterCIDR: ${KUBE_CLUSTER_CIDR}
     configSyncPeriod: 15m0s
     conntrack:
-      max: null
       maxPerCore: 32768
       min: 131072
       tcpCloseWaitTimeout: 1h0m0s
@@ -117,7 +116,7 @@ spec:
         imagePullPolicy: IfNotPresent
         command:
         - /hyperkube
-        - proxy
+        - kube-proxy
         - --config=/var/lib/kube-proxy/config.conf
         - --hostname-override=\$(NODE_NAME)
         env:

@@ -22,8 +22,8 @@ haproxy:
   keepalived_use_unicast: "true"
 
 kubernetes:
-  version: v1.14.3
-  hyperkube_image_repo: gcr.io/google_containers/hyperkube
+  version: v1.15.2
+  hyperkube_image_repo: k8s.gcr.io/hyperkube
   cluster_cidr: 10.244.0.0/16
   node_cidr_mask_size: 24
   service_ip_range: 10.254.0.0/24
@@ -44,20 +44,20 @@ kubernetes:
   cloud_provider: ""
   cloud_config: ""
   upstream_nameservers: '[\"8.8.8.8\", \"8.8.4.4\"]'
-  addons: ["kube-proxy", "coredns"]
+  addons: ["kube-proxy"]
   cgroup_driver: cgroupfs
   proxy_mode: "iptables"
   systemd_docker_service_name: "docker.service"
-  kube_reserved: '{ cpu: 100m, memory: 100Mi, ephemeral-storage: 1Gi}'
+  kube_reserved: '' #'{ cpu: 100m, memory: 100Mi, ephemeral-storage: 1Gi}'
   # kube_reserved_cgroup: /docker
   kube_reserved_cgroup: ''
-  system_reserved: '{cpu: 200m, memory: 1024Mi, ephemeral-storage: 1Gi}'
+  system_reserved: '' #'{cpu: 200m, memory: 1024Mi, ephemeral-storage: 1Gi}'
   # system_reserved_cgroup: /system.slice
   system_reserved_cgroup: ''
 
 etcd:
   selfhosted: "false"
-  version: "v3.2.24"
+  version: "v3.3.10"
   image_repo: "quay.io/coreos/etcd"
   certs_dir: "/etc/etcd/pki"
   cluster_ip: 10.254.0.20
