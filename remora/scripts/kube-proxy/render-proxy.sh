@@ -138,10 +138,7 @@ spec:
       priorityClassName: system-node-critical
       serviceAccountName: kube-proxy
       tolerations:
-      - key: CriticalAddonsOnly
-        operator: Exists
-      - key: node-role.kubernetes.io/master
-        operator: Exists
+      - operator: Exists
         effect: NoSchedule
       volumes:
       - configMap:
